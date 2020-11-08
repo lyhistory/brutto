@@ -16,7 +16,7 @@ try:                                  #
         punctuation as symb,          #
     )                                 ###############################
 except:                                                             #
-    print("\t\nError: Something bad has happened in the import!\n")  #
+    print "\t\nError: Something bad has happened in the import!\n"  #
                                                                     #
 #####################################################################
 #
@@ -53,5 +53,5 @@ class Brutto:
         char += numb
         char += symb
         # def play
-        for path in map("".join, itertools.product(char, repeat = value)):
-            print(path)
+        for path in itertools.imap("".join, itertools.product(char, repeat = value)):
+            print path

